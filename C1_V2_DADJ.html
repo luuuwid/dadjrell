@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Event Host • Emcee • Voice-Over Artist</title>
+<meta name="description" content="Professional event host, emcee and voice-over artist. Save my contact and book me for your event.">
+<meta name="theme-color" content="#0e0b0a">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+/* ===== THEME COLORS (edit here) ===== */
+:root{
+  --bg:#0e0b0a; --bg2:#17110f; --card:#1d1613; --line:rgba(214,178,110,.22);
+  --gold:#d6b26e; --gold2:#f1dba4; --ivory:#f6efe3; --muted:#b9ad9c; --wine:#7a1f2b;
+  --serif:'Cormorant Garamond',Georgia,serif; --sans:'Montserrat',system-ui,sans-serif;
+  --goldgrad:linear-gradient(120deg,#b58a43,#f1dba4 45%,#c89b4f 70%,#f1dba4);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{background:var(--bg);color:var(--ivory);font-family:var(--sans);line-height:1.65;overflow-x:hidden;-webkit-tap-highlight-color:transparent}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.1}
+:focus-visible{outline:2px solid var(--gold2);outline-offset:3px}
+.wrap{width:min(1100px,100% - 40px);margin-inline:auto}
+section{padding:84px 0;position:relative}
+.sec-head{max-width:640px;margin-bottom:38px}
+.sec-head h2{font-size:clamp(2rem,6vw,3.2rem);margin-bottom:12px}
+.sec-head p{color:var(--muted)}
+.gold-text{background:var(--goldgrad);-webkit-background-clip:text;background-clip:text;color:transparent;background-size:200% auto;animation:shimmer 6s linear infinite}
+@keyframes shimmer{to{background-position:200% center}}
+
+/* Loader */
+#loader{position:fixed;inset:0;z-index:999;background:var(--bg);display:grid;place-items:center;transition:opacity .6s,visibility .6s}
+#loader.done{opacity:0;visibility:hidden}
+.bars{display:flex;gap:5px;align-items:center;height:44px}
+.bars i{width:5px;height:100%;border-radius:3px;background:var(--goldgrad);transform-origin:center;animation:bar 1s ease-in-out infinite}
+.bars i:nth-child(2n){animation-delay:-.4s}.bars i:nth-child(3n){animation-delay:-.7s}.bars i:nth-child(4n){animation-delay:-.2s}
+@keyframes bar{0%,100%{transform:scaleY(.25)}50%{transform:scaleY(1)}}
+.bars.sm{height:20px}.bars.sm i{width:3px}
+
+/* Nav */
+header{position:fixed;top:0;left:0;right:0;z-index:100;padding-top:env(safe-area-inset-top,0);transition:background .3s,border-color .3s;border-bottom:1px solid transparent}
+header.scrolled{background:rgba(14,11,10,.88);backdrop-filter:blur(14px);border-color:var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:62px}
+.logo{font-family:var(--serif);font-size:1.35rem;font-weight:700;display:flex;gap:9px;align-items:center}
+.logo i{color:var(--gold)}
+.menu{display:flex;gap:26px;list-style:none}
+.menu a{font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);padding:6px 0;border-bottom:1px solid transparent;transition:.25s}
+.menu a:hover,.menu a.active{color:var(--gold2);border-color:var(--gold)}
+.burger{display:none;background:none;border:0;color:var(--ivory);font-size:1.4rem;width:46px;height:46px;cursor:pointer}
+@media(max-width:860px){
+  .burger{display:block}
+  .menu{position:fixed;inset:0 0 0 auto;width:min(300px,80vw);background:var(--bg2);flex-direction:column;gap:6px;padding:90px 28px;transform:translateX(100%);transition:transform .4s cubic-bezier(.2,.8,.2,1);border-left:1px solid var(--line)}
+  .menu.open{transform:none}
+  .menu a{font-size:.9rem;display:block;padding:12px 0}
+}
+
+/* Buttons */
+.btn{position:relative;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 24px;border-radius:50px;font:600 .82rem var(--sans);letter-spacing:.1em;text-transform:uppercase;cursor:pointer;border:1px solid var(--line);background:rgba(255,255,255,.04);color:var(--ivory);transition:transform .25s,box-shadow .25s,background .25s}
+.btn:hover{transform:translateY(-2px);border-color:var(--gold)}
+.btn.primary{background:var(--goldgrad);background-size:200% auto;color:#1a120a;border:0;font-size:.9rem;min-height:58px;box-shadow:0 8px 30px rgba(214,178,110,.28);animation:shimmer 5s linear infinite}
+.btn.wine{background:var(--wine);border-color:transparent}
+.btn.block{width:100%}
+.ripple{position:absolute;border-radius:50%;background:rgba(255,255,255,.4);transform:scale(0);animation:rip .6s linear;pointer-events:none}
+@keyframes rip{to{transform:scale(4);opacity:0}}
+
+/* HOME */
+#home{min-height:100svh;padding:92px 0 56px;display:flex;align-items:center;overflow:hidden;background:radial-gradient(ellipse at 50% 0%,#2a1a14 0%,var(--bg) 62%)}
+.spot{position:absolute;top:-10%;left:50%;width:140%;height:70%;transform:translateX(-50%);background:conic-gradient(from 180deg at 50% 0,transparent 160deg,rgba(241,219,164,.09) 175deg,transparent 190deg);pointer-events:none}
+#bokeh{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+#bokeh span{position:absolute;border-radius:50%;background:radial-gradient(circle,rgba(241,219,164,.5),transparent 70%);animation:drift linear infinite;opacity:.0}
+@keyframes drift{0%{transform:translateY(0);opacity:0}15%{opacity:.5}85%{opacity:.4}100%{transform:translateY(-120px);opacity:0}}
+.card{position:relative;max-width:520px;margin-inline:auto;text-align:center}
+.avail{display:inline-flex;gap:9px;align-items:center;font-size:.68rem;letter-spacing:.18em;font-weight:600;padding:7px 15px;border:1px solid var(--line);border-radius:30px;background:rgba(0,0,0,.35);color:var(--gold2)}
+.avail b{width:8px;height:8px;border-radius:50%;background:#43d17a;box-shadow:0 0 0 0 rgba(67,209,122,.6);animation:pulse 1.8s infinite}
+@keyframes pulse{70%{box-shadow:0 0 0 9px rgba(67,209,122,0)}100%{box-shadow:0 0 0 0 rgba(67,209,122,0)}}
+.portrait{width:176px;height:176px;margin:22px auto 20px;border-radius:50%;padding:4px;background:var(--goldgrad);position:relative;box-shadow:0 0 60px rgba(214,178,110,.25)}
+.portrait .ph{width:100%;height:100%;border-radius:50%;border:4px solid var(--bg)}
+.ph{position:relative;overflow:hidden;background:linear-gradient(135deg,#2a1c17,#120d0b);display:grid;place-items:center}
+.ph::before{content:"\f130";font-family:"Font Awesome 6 Free";font-weight:900;color:rgba(214,178,110,.3);font-size:2.2rem;position:absolute}
+.ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.ph.missing{background:repeating-linear-gradient(45deg,#241a15 0 14px,#1b1411 14px 28px)}
+.ph.missing::before{font-size:2.6rem;top:38%;color:rgba(214,178,110,.45)}
+.ph.missing::after{content:"PHOTO HERE\A" attr(data-file);white-space:pre;text-align:center;position:absolute;left:8px;right:8px;top:calc(38% + 2.6rem);font:600 .66rem/1.5 var(--sans);letter-spacing:.08em;color:var(--gold2);word-break:break-all}
+.portrait .ph.missing::before{top:30%;font-size:2rem}.portrait .ph.missing::after{top:calc(30% + 2.4rem);font-size:.56rem;left:14px;right:14px}
+.biz{font-family:var(--serif);font-size:clamp(2.4rem,11vw,3.6rem);font-weight:700;letter-spacing:.01em}
+.fullname{font-size:.82rem;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);margin:6px 0 12px}
+.role{display:flex;gap:12px;justify-content:center;align-items:center;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold2);font-weight:600;flex-wrap:wrap}
+.role .bars{margin:0}
+.tagline{font-family:var(--serif);font-style:italic;font-size:1.28rem;color:var(--ivory);opacity:.9;margin:16px auto 22px;max-width:420px;line-height:1.4}
+.info{list-style:none;text-align:left;border:1px solid var(--line);border-radius:18px;background:rgba(29,22,19,.7);backdrop-filter:blur(8px);margin-bottom:18px}
+.info li a{display:flex;align-items:center;gap:14px;padding:13px 18px;min-height:52px;font-size:.93rem;word-break:break-word}
+.info li+li{border-top:1px solid var(--line)}
+.info i{color:var(--gold);width:20px;text-align:center}
+.cta-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
+.quick{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:14px 0}
+.quick a{display:flex;flex-direction:column;align-items:center;gap:6px;padding:14px 4px;min-height:68px;border:1px solid var(--line);border-radius:16px;font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;background:rgba(255,255,255,.03);transition:.25s}
+.quick a i{font-size:1.2rem;color:var(--gold)}
+.quick a:hover{background:rgba(214,178,110,.12);transform:translateY(-2px)}
+.social{display:flex;justify-content:center;gap:12px;margin:20px 0}
+.social a{width:50px;height:50px;border-radius:50%;display:grid;place-items:center;border:1px solid var(--line);font-size:1.15rem;color:var(--gold2);transition:.25s}
+.social a:hover{background:var(--gold);color:#1a120a;transform:translateY(-3px)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding-top:20px;border-top:1px solid var(--line)}
+.stats b{display:block;font-family:var(--serif);font-size:2rem;color:var(--gold2)}
+.stats span{font-size:.68rem;letter-spacing:.08em;color:var(--muted);text-transform:uppercase}
+
+/* ABOUT */
+.split{display:grid;gap:34px;align-items:center}
+@media(min-width:800px){.split{grid-template-columns:1fr 1fr;gap:60px}}
+.about-img{aspect-ratio:4/5;border-radius:200px 200px 18px 18px;border:1px solid var(--line)}
+.about-img img{transform:scale(1.12)}
+.about p{color:var(--muted);margin-bottom:20px}
+.chips{display:flex;flex-wrap:wrap;gap:9px}
+.chips span{font-size:.78rem;padding:8px 14px;border:1px solid var(--line);border-radius:30px;color:var(--gold2);background:rgba(214,178,110,.06)}
+.chips i{margin-right:7px;font-size:.7rem}
+
+/* Cards */
+.grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fill,minmax(250px,1fr))}
+.svc{padding:26px 24px;border:1px solid var(--line);border-radius:18px;background:var(--card);transition:transform .3s,border-color .3s}
+.svc:hover{transform:translateY(-5px);border-color:var(--gold)}
+.svc i{font-size:1.5rem;color:var(--gold);margin-bottom:16px;display:block}
+.svc h3{font-size:1.4rem;margin-bottom:6px}
+.svc p{font-size:.88rem;color:var(--muted)}
+#voice{background:linear-gradient(180deg,var(--bg),#150d0c 40%,var(--bg))}
+.vo-card{overflow:hidden}
+.vo-card::after{content:"";position:absolute;right:-10px;bottom:-6px;width:120px;height:46px;opacity:.12;background:repeating-linear-gradient(90deg,var(--gold) 0 4px,transparent 4px 10px);-webkit-mask:linear-gradient(0deg,#000 20%,transparent);mask:linear-gradient(0deg,#000 20%,transparent)}
+.svc{position:relative}
+
+/* Demos */
+.demo{padding:22px;border:1px solid var(--line);border-radius:18px;background:var(--card);transition:.3s}
+.demo.playing{border-color:var(--gold);box-shadow:0 0 34px rgba(214,178,110,.18)}
+.demo h3{font-size:1.35rem;display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+.demo audio{width:100%;height:44px;filter:sepia(.4) saturate(.8)}
+.demo .bars{height:22px;opacity:.35}.demo .bars i{animation-play-state:paused;width:3px}
+.demo.playing .bars{opacity:1}.demo.playing .bars i{animation-play-state:running}
+.sub{font-family:var(--serif);font-size:1.9rem;margin:54px 0 20px}
+
+/* Videos */
+.vid{border-radius:18px;overflow:hidden;border:1px solid var(--line);background:var(--card)}
+.vid video{width:100%;aspect-ratio:16/9;display:block;background:#0a0706;object-fit:cover}
+.vid p{padding:13px 18px;font-size:.88rem}
+.vid i{color:var(--gold);margin-right:8px}
+
+/* Gallery */
+.gallery{columns:2;column-gap:12px}
+@media(min-width:800px){.gallery{columns:3;column-gap:16px}}
+.shot{break-inside:avoid;margin-bottom:12px;position:relative;border-radius:14px;overflow:hidden;cursor:pointer;border:1px solid var(--line);display:block;width:100%;padding:0;background:none;color:inherit;font:inherit;text-align:left}
+@media(min-width:800px){.shot{margin-bottom:16px}}
+.shot .ph{aspect-ratio:4/5}
+.shot:nth-child(3n+2) .ph{aspect-ratio:1/1}.shot:nth-child(4n) .ph{aspect-ratio:4/6}
+.shot img{transition:transform .6s}
+.shot:hover img{transform:scale(1.06)}
+.shot figcaption,.shot span.cap{position:absolute;left:0;right:0;bottom:0;padding:34px 14px 12px;font-size:.78rem;background:linear-gradient(transparent,rgba(0,0,0,.85));color:var(--gold2)}
+.reveal-img{clip-path:inset(0 0 100% 0);transition:clip-path .9s cubic-bezier(.2,.8,.2,1)}
+.reveal-img.in{clip-path:inset(0)}
+#lb{position:fixed;inset:0;z-index:300;background:rgba(8,6,5,.94);display:grid;place-items:center;opacity:0;visibility:hidden;transition:.35s;padding:20px}
+#lb.open{opacity:1;visibility:visible}
+#lb img{max-height:78vh;max-width:100%;border-radius:10px;transform:scale(.94);transition:transform .35s}
+#lb.open img{transform:none}
+#lb p{text-align:center;color:var(--gold2);margin-top:12px;font-size:.9rem}
+.lb-b{position:absolute;width:52px;height:52px;border-radius:50%;border:1px solid var(--line);background:rgba(0,0,0,.5);color:var(--ivory);font-size:1.1rem;cursor:pointer}
+#lbx{top:max(16px,env(safe-area-inset-top));right:16px}#lbp{left:12px;top:50%}#lbn{right:12px;top:50%}
+
+/* Reviews */
+.slider{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:14px;scrollbar-width:thin;scrollbar-color:var(--gold) transparent}
+.rev{flex:0 0 min(86%,360px);scroll-snap-align:start;padding:26px;border:1px solid var(--line);border-radius:18px;background:var(--card)}
+.rev .st{color:var(--gold);letter-spacing:3px;margin-bottom:12px}
+.rev q{display:block;font-family:var(--serif);font-size:1.3rem;line-height:1.4;quotes:none;margin-bottom:16px}
+.rev b{display:block;font-size:.85rem}.rev small{color:var(--muted)}
+
+/* Contact */
+#contact{background:radial-gradient(ellipse at 50% 100%,#2b1410,var(--bg) 70%);text-align:center}
+#contact .sec-head{margin-inline:auto}
+.btns{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin:26px 0}
+form{max-width:560px;margin:40px auto 0;text-align:left;display:grid;gap:12px}
+form h3{font-size:1.5rem;text-align:center}
+form small{text-align:center;color:var(--muted);font-size:.78rem}
+input,select,textarea{width:100%;padding:15px 16px;border-radius:12px;border:1px solid var(--line);background:var(--card);color:var(--ivory);font:inherit;font-size:16px}
+textarea{min-height:110px;resize:vertical}
+footer{padding:30px 0 120px;text-align:center;color:var(--muted);font-size:.78rem;border-top:1px solid var(--line)}
+
+#toast{position:fixed;left:50%;bottom:92px;z-index:400;transform:translate(-50%,20px);max-width:90vw;padding:13px 20px;border-radius:30px;background:var(--gold2);color:#1a120a;font:600 .82rem var(--sans);text-align:center;opacity:0;visibility:hidden;transition:.35s}
+#toast.show{opacity:1;visibility:visible;transform:translate(-50%,0)}
+/* Sticky bar + top */
+#bar{position:fixed;left:0;right:0;bottom:0;z-index:90;display:grid;grid-template-columns:repeat(4,1fr);background:rgba(14,11,10,.94);backdrop-filter:blur(14px);border-top:1px solid var(--line);padding:6px 6px calc(6px + env(safe-area-inset-bottom,0));transition:transform .3s}
+#bar a,#bar button{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;min-height:54px;background:none;border:0;color:var(--ivory);font:600 .62rem var(--sans);letter-spacing:.08em;text-transform:uppercase;cursor:pointer}
+#bar i{color:var(--gold);font-size:1.15rem}
+#bar .hot i{color:#1a120a;background:var(--goldgrad);width:34px;height:34px;display:grid;place-items:center;border-radius:50%;font-size:1rem}
+#top{position:fixed;right:16px;bottom:88px;z-index:90;width:46px;height:46px;border-radius:50%;border:1px solid var(--line);background:rgba(14,11,10,.9);color:var(--gold2);cursor:pointer;opacity:0;visibility:hidden;transition:.3s}
+#top.show{opacity:1;visibility:visible}
+@media(min-width:861px){#bar{display:none}footer{padding-bottom:30px}#top{bottom:24px}}
+
+/* Reveal */
+.rv{opacity:0;transform:translateY(26px);transition:opacity .8s,transform .8s}
+.rv.in{opacity:1;transform:none}
+.hero-in>*{opacity:0;transform:translateY(20px);animation:up .9s cubic-bezier(.2,.8,.2,1) forwards}
+.hero-in>*:nth-child(1){animation-delay:.1s}.hero-in>*:nth-child(2){animation-delay:.2s}.hero-in>*:nth-child(3){animation-delay:.3s}.hero-in>*:nth-child(4){animation-delay:.4s}.hero-in>*:nth-child(5){animation-delay:.5s}.hero-in>*:nth-child(6){animation-delay:.6s}.hero-in>*:nth-child(7){animation-delay:.7s}.hero-in>*:nth-child(8){animation-delay:.8s}.hero-in>*:nth-child(9){animation-delay:.9s}.hero-in>*:nth-child(10){animation-delay:1s}
+@keyframes up{to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+  .rv,.hero-in>*{opacity:1;transform:none}.reveal-img{clip-path:none}
+}
+</style>
+</head>
+<body>
+
+<div id="loader" aria-hidden="true"><div class="bars"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+
+<header id="hdr">
+  <div class="wrap nav">
+    <a href="#home" class="logo" aria-label="Home"><i class="fa-solid fa-microphone-lines"></i><span data-bind="businessName">YOUR BUSINESS NAME</span></a>
+    <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false"><i class="fa-solid fa-bars"></i></button>
+    <ul class="menu" id="menu">
+      <li><a href="#home">Home</a></li><li><a href="#about">About</a></li><li><a href="#hosting">Hosting</a></li>
+      <li><a href="#voice">Voice-Over</a></li><li><a href="#gallery">Gallery</a></li><li><a href="#reviews">Reviews</a></li><li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</header>
+
+<main>
+<!-- ============ HOME: DIGITAL BUSINESS CARD ============ -->
+<section id="home" data-spy>
+  <div class="spot"></div><div id="bokeh"></div>
+  <div class="wrap">
+    <div class="card hero-in">
+      <div><span class="avail"><b></b>AVAILABLE FOR BOOKINGS</span></div>
+      <!-- PHOTO: replace profile.png -->
+      <div class="portrait"><div class="ph" data-file="profile.png"><img src="profile.png" alt="Portrait of the event host" onerror="this.parentElement.classList.add('missing');this.remove()"></div></div>
+      <h1 class="biz gold-text" data-bind="businessName">YOUR BUSINESS NAME</h1>
+      <p class="fullname" data-bind="fullName">YOUR FULL NAME</p>
+      <div class="role"><span>Event Host</span><span>•</span><span>Emcee</span><span>•</span><span>Voice-Over Artist</span></div>
+      <div class="role" style="margin-top:10px"><div class="bars sm" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+      <p class="tagline">“Turning every event into a memorable experience — and every script into a voice worth hearing.”</p>
+      <ul class="info">
+        <li><a data-href="tel" href="#"><i class="fa-solid fa-phone"></i><span data-bind="phone">+639XXXXXXXXX</span></a></li>
+        <li><a data-href="mailto" href="#"><i class="fa-solid fa-envelope"></i><span data-bind="email">email@example.com</span></a></li>
+        <li><a data-href="map" href="#" target="_blank" rel="noopener"><i class="fa-solid fa-location-dot"></i><span data-bind="location">Philippines</span></a></li>
+      </ul>
+      <button class="btn primary block" data-save aria-label="Save contact to phone"><i class="fa-solid fa-address-book"></i> Save Contact</button>
+      <div class="cta-row">
+        <a class="btn wine" href="#contact"><i class="fa-solid fa-calendar-check"></i> Book Me</a>
+        <a class="btn" data-href="tel" href="#"><i class="fa-solid fa-phone"></i> Call Me</a>
+      </div>
+      <div class="quick">
+        <a data-href="sms" href="#"><i class="fa-solid fa-comment-sms"></i>Message</a>
+        <a data-href="mailto" href="#"><i class="fa-solid fa-envelope"></i>Email</a>
+        <a data-href="messenger" href="#" target="_blank" rel="noopener"><i class="fa-brands fa-facebook-messenger"></i>Messenger</a>
+      </div>
+      <div class="social">
+        <a data-href="facebook" href="#" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+        <a data-href="instagram" href="#" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a data-href="tiktok" href="#" target="_blank" rel="noopener" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+        <a data-href="messenger" href="#" target="_blank" rel="noopener" aria-label="Messenger"><i class="fa-brands fa-facebook-messenger"></i></a>
+      </div>
+      <!-- STATS: edit data-count numbers -->
+      <div class="stats">
+        <div><b data-count="100" data-suffix="+">0</b><span>Events Hosted</span></div>
+        <div><b data-count="50" data-suffix="+">0</b><span>Voice Projects</span></div>
+        <div><b data-count="5" data-suffix="+">0</b><span>Years Experience</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section id="about" data-spy>
+  <div class="wrap split about">
+    <!-- PHOTO: replace hero-event.jpg -->
+    <div class="ph about-img reveal-img" data-file="hero-event.jpg"><img src="hero-event.jpg" alt="Host on stage at an event" loading="lazy" onerror="this.parentElement.classList.add('missing');this.remove()"></div>
+    <div class="rv">
+      <div class="sec-head" style="margin-bottom:18px"><h2>Meet Your Host</h2></div>
+      <p>More than simply holding a microphone, I help create energy, keep the program flowing, connect with the audience, and make every moment memorable — in English and Filipino, from formal programs to lively celebrations.</p>
+      <div class="chips">
+        <span><i class="fa-solid fa-star"></i>Confident stage presence</span><span><i class="fa-solid fa-users"></i>Audience engagement</span>
+        <span><i class="fa-solid fa-comments"></i>Professional communication</span><span><i class="fa-solid fa-list-check"></i>Program coordination</span>
+        <span><i class="fa-solid fa-bolt"></i>Improvisation</span><span><i class="fa-solid fa-language"></i>English &amp; Filipino</span>
+        <span><i class="fa-solid fa-shuffle"></i>Smooth transitions</span><span><i class="fa-solid fa-champagne-glasses"></i>Crowd interaction</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HOSTING SERVICES ============ -->
+<section id="hosting" data-spy>
+  <div class="wrap">
+    <div class="sec-head rv"><h2>Event Hosting</h2><p>From intimate celebrations to large corporate programs, every event gets a host who keeps the room engaged and the schedule on track.</p></div>
+    <div class="grid" id="hostGrid"></div>
+  </div>
+</section>
+
+<!-- ============ GALLERY ============ -->
+<section id="gallery" data-spy>
+  <div class="wrap">
+    <div class="sec-head rv"><h2>Moments Behind the Mic</h2><p>Real events, real audiences. Tap a photo to view it larger.</p></div>
+    <div class="gallery" id="galleryGrid"></div>
+  </div>
+</section>
+
+<!-- ============ VOICE-OVER ============ -->
+<section id="voice" data-spy>
+  <div class="wrap">
+    <div class="sec-head rv"><h2>The Voice Behind Your Story</h2><p>Beyond the stage, I record professional voice-overs for brands, businesses, and creators — clear, warm, and ready to publish.</p></div>
+    <div class="grid" id="voGrid"></div>
+
+    <h3 class="sub rv">Listen to My Voice</h3>
+    <!-- AUDIO: replace these mp3 files -->
+    <div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(280px,1fr))">
+      <div class="demo rv"><h3>Commercial Demo <div class="bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div></h3><audio controls preload="none" src="vo-commercial.mp3"></audio></div>
+      <div class="demo rv"><h3>Corporate / AVP Demo <div class="bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div></h3><audio controls preload="none" src="vo-corporate.mp3"></audio></div>
+      <div class="demo rv"><h3>Narration Demo <div class="bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div></h3><audio controls preload="none" src="vo-narration.mp3"></audio></div>
+      <div class="demo rv"><h3>Event Voice-Over Demo <div class="bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div></h3><audio controls preload="none" src="vo-event.mp3"></audio></div>
+    </div>
+
+    <h3 class="sub rv">See Me in Action</h3>
+    <!-- VIDEO: replace mp4 files (add poster="thumb.jpg" if you like) -->
+    <div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(290px,1fr))">
+      <div class="vid rv"><video controls preload="none" playsinline src="video-highlight.mp4"></video><p><i class="fa-solid fa-film"></i>Hosting Highlight Reel</p></div>
+      <div class="vid rv"><video controls preload="none" playsinline src="video-wedding.mp4"></video><p><i class="fa-solid fa-ring"></i>Wedding Hosting</p></div>
+      <div class="vid rv"><video controls preload="none" playsinline src="video-corporate.mp4"></video><p><i class="fa-solid fa-briefcase"></i>Corporate Hosting</p></div>
+      <div class="vid rv"><video controls preload="none" playsinline src="video-voiceover.mp4"></video><p><i class="fa-solid fa-microphone"></i>Voice-Over Sample</p></div>
+      <div class="vid rv"><video controls preload="none" playsinline src="video-events.mp4"></video><p><i class="fa-solid fa-champagne-glasses"></i>Event Highlights</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ REVIEWS ============ -->
+<section id="reviews" data-spy>
+  <div class="wrap">
+    <div class="sec-head rv"><h2>Kind Words from Clients</h2></div>
+    <!-- TESTIMONIALS: replace names and quotes -->
+    <div class="slider rv">
+      <div class="rev"><div class="st">★★★★★</div><q>Professional, energetic, and very easy to work with. Our guests stayed engaged throughout the entire program.</q><b>Client Name</b><small>Wedding Client</small></div>
+      <div class="rev"><div class="st">★★★★★</div><q>The program flowed smoothly and every transition felt natural.</q><b>Client Name</b><small>Corporate Event</small></div>
+      <div class="rev"><div class="st">★★★★★</div><q>Excellent voice quality and very professional delivery.</q><b>Client Name</b><small>Voice-Over Client</small></div>
+    </div>
+    <h3 class="sub rv">Why Work With Me</h3>
+    <div class="grid" id="whyGrid"></div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section id="contact" data-spy>
+  <div class="wrap">
+    <div class="sec-head rv"><h2>Let’s Make Your Event Memorable</h2><p>Tell me about your date, venue, and program. I’ll reply with availability and rates.</p></div>
+    <div class="btns rv">
+      <a class="btn primary" data-href="mailto" data-subject="Event Booking Inquiry" href="#"><i class="fa-solid fa-calendar-check"></i> Book an Event</a>
+      <a class="btn" data-href="tel" href="#"><i class="fa-solid fa-phone"></i> Call Now</a>
+      <a class="btn" data-href="sms" href="#"><i class="fa-solid fa-comment-sms"></i> Message Me</a>
+      <a class="btn" data-href="mailto" href="#"><i class="fa-solid fa-envelope"></i> Email Me</a>
+      <button class="btn" data-save><i class="fa-solid fa-address-book"></i> Save Contact</button>
+    </div>
+    <div class="social rv">
+      <a data-href="facebook" href="#" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+      <a data-href="instagram" href="#" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+      <a data-href="tiktok" href="#" target="_blank" rel="noopener" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+      <a data-href="messenger" href="#" target="_blank" rel="noopener" aria-label="Messenger"><i class="fa-brands fa-facebook-messenger"></i></a>
+    </div>
+    <!-- Inquiry form: opens your email app with the details filled in (no server involved) -->
+    <form id="inq" class="rv">
+      <h3>Send an Inquiry</h3>
+      <input name="name" placeholder="Your name" required autocomplete="name">
+      <input name="phone" type="tel" placeholder="Your phone number" autocomplete="tel">
+      <select name="type" aria-label="Event type"><option>Wedding</option><option>Corporate Event</option><option>Debut</option><option>Birthday / Private Event</option><option>Pageant</option><option>Product Launch</option><option>Voice-Over Project</option><option>Other</option></select>
+      <input name="date" placeholder="Event date and venue">
+      <textarea name="msg" placeholder="Tell me about your event"></textarea>
+      <button class="btn primary" type="submit"><i class="fa-solid fa-paper-plane"></i> Open Email Draft</button>
+      <small>This opens your email app with your details ready to send.</small>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap">© <span id="yr"></span> <span data-bind="businessName"></span>. All rights reserved.</div></footer>
+
+<!-- Sticky mobile bar -->
+<nav id="bar" aria-label="Quick contact">
+  <a data-href="tel" href="#"><i class="fa-solid fa-phone"></i>Call</a>
+  <a data-href="sms" href="#"><i class="fa-solid fa-comment-sms"></i>Message</a>
+  <button data-save class="hot"><i class="fa-solid fa-address-book"></i>Save</button>
+  <a href="#contact"><i class="fa-solid fa-calendar-check"></i>Book</a>
+</nav>
+<button id="top" aria-label="Scroll to top"><i class="fa-solid fa-chevron-up"></i></button>
+
+<div id="toast" role="status" aria-live="polite"></div>
+<div id="lb" role="dialog" aria-modal="true" aria-label="Photo viewer">
+  <button class="lb-b" id="lbx" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+  <button class="lb-b" id="lbp" aria-label="Previous photo"><i class="fa-solid fa-chevron-left"></i></button>
+  <button class="lb-b" id="lbn" aria-label="Next photo"><i class="fa-solid fa-chevron-right"></i></button>
+  <figure><img id="lbi" alt=""><p id="lbc"></p></figure>
+</div>
+
+<script>
+/* ==============================
+   BUSINESS INFORMATION
+   EDIT THESE DETAILS
+================================ */
+const profile = {
+  businessName: "YOUR BUSINESS NAME",
+  firstName: "FIRST NAME",
+  lastName: "LAST NAME",
+  fullName: "YOUR FULL NAME",
+  profession: "Event Host & Voice-Over Artist",
+  phone: "+639XXXXXXXXX",
+  email: "email@example.com",
+  location: "City, Philippines",
+  country: "Philippines",
+  website: "https://yourwebsite.com",
+  facebook: "#",
+  instagram: "#",
+  tiktok: "#",
+  messenger: "#"
+};
+
+/* ==============================
+   GALLERY — edit filenames/captions
+================================ */
+const photos = [
+  ["event-1.jpg","Wedding Reception"],["event-2.jpg","Corporate Event"],["event-3.jpg","Awards Night"],["event-4.jpg","Debut Celebration"],
+  ["event-5.jpg","Product Launch"],["event-6.jpg","Community Event"],["event-7.jpg","Pageant Night"],["event-8.jpg","Private Celebration"]
+];
+
+/* ==============================
+   SERVICES — edit text/icons
+================================ */
+const hosting = [
+  ["fa-ring","Wedding Host","Warm, polished hosting from the entrance to the last dance."],
+  ["fa-building","Corporate Event Host","Keeps programs on time and on message for your team and guests."],
+  ["fa-cake-candles","Debut Host","Makes the 18 roses, speeches, and surprises flow beautifully."],
+  ["fa-champagne-glasses","Birthdays & Private Events","Fun, personal hosting that gets every guest involved."],
+  ["fa-crown","Pageants","Confident, clear delivery for contestants and audiences."],
+  ["fa-rocket","Product Launches","Builds excitement and presents your brand with energy."],
+  ["fa-school","School & Community Events","Engaging hosting for programs of any size."],
+  ["fa-award","Awarding Ceremonies","Gives every winner and sponsor a proper moment."],
+  ["fa-people-group","Conferences","Clear moderation, introductions, and smooth transitions."],
+  ["fa-scroll","Formal Programs","Respectful, well-paced hosting for official occasions."]
+];
+const vo = [
+  ["fa-bullhorn","Commercial Voice-Over","TV, radio, and online ads with a convincing read."],
+  ["fa-film","AVP Narration","Clear narration for audio-visual presentations."],
+  ["fa-microphone-lines","Event Voice-Over","Announcements and voice-of-god for live events."],
+  ["fa-clapperboard","Promotional Videos","A voice that sells your product or service."],
+  ["fa-hashtag","Social Media Content","Short, punchy reads for reels, ads, and posts."],
+  ["fa-graduation-cap","Educational Narration","Easy-to-follow reads for lessons and e-learning."],
+  ["fa-chart-line","Corporate Presentations","Professional narration for company materials."],
+  ["fa-radio","Radio / Online Ads","Broadcast-ready spots delivered on schedule."]
+];
+const why = [
+  ["fa-star","Professional Stage Presence","Calm, confident, and in command of the room."],
+  ["fa-users","Audience Engagement","Guests stay involved from start to finish."],
+  ["fa-sliders","Flexible Hosting Style","Formal, casual, or both — matched to your event."],
+  ["fa-microphone","Clear & Powerful Voice","Well-projected and easy to understand."],
+  ["fa-handshake","Reliable Communication","Quick replies and a clear plan before the big day."],
+  ["fa-wand-magic-sparkles","Customized Experience","Every program is tailored to your story."]
+];
+
+/* ===== helpers ===== */
+const $ = (s,c=document)=>c.querySelector(s), $$=(s,c=document)=>[...c.querySelectorAll(s)];
+const digits = profile.phone.replace(/[^\d+]/g,"");
+const card = (a,cls="")=>`<div class="svc rv ${cls}"><i class="fa-solid ${a[0]}"></i><h3>${a[1]}</h3><p>${a[2]}</p></div>`;
+$("#hostGrid").innerHTML = hosting.map(a=>card(a)).join("");
+$("#voGrid").innerHTML = vo.map(a=>card(a,"vo-card")).join("");
+$("#whyGrid").innerHTML = why.map(a=>card(a)).join("");
+$("#galleryGrid").innerHTML = photos.map((p,i)=>`<button class="shot rv" data-i="${i}" aria-label="Open photo: ${p[1]}"><div class="ph reveal-img" data-file="${p[0]}"><img src="${p[0]}" alt="${p[1]}" loading="lazy" onerror="this.parentElement.classList.add('missing');this.remove()"></div><span class="cap">${p[1]}</span></button>`).join("");
+
+/* ===== bind profile data to the page ===== */
+$$("[data-bind]").forEach(e=>e.textContent = profile[e.dataset.bind]);
+const links = {
+  tel:"tel:"+digits, sms:"sms:"+digits, mailto:"mailto:"+profile.email,
+  map:"https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(profile.location),
+  facebook:profile.facebook, instagram:profile.instagram, tiktok:profile.tiktok, messenger:profile.messenger
+};
+$$("[data-href]").forEach(a=>{
+  let h = links[a.dataset.href];
+  if(a.dataset.subject) h += "?subject="+encodeURIComponent(a.dataset.subject);
+  a.href = h;
+});
+document.title = profile.businessName + " | Event Host • Emcee • Voice-Over Artist";
+$("#yr").textContent = new Date().getFullYear();
+
+/* ===== SAVE CONTACT (vCard .vcf) ===== */
+function esc(s){return String(s).replace(/\\/g,"\\\\").replace(/;/g,"\\;").replace(/,/g,"\\,").replace(/\n/g,"\\n")}
+function saveContact(){
+  const p = profile, urls = [p.website,p.facebook,p.instagram,p.tiktok].filter(u=>u&&u!=="#");
+  const lines = [
+    "BEGIN:VCARD","VERSION:3.0",
+    `N:${esc(p.lastName)};${esc(p.firstName)};;;`,
+    `FN:${esc(p.fullName)}`,`ORG:${esc(p.businessName)}`,`TITLE:${esc(p.profession)}`,
+    `TEL;TYPE=CELL:${digits}`,`EMAIL;TYPE=INTERNET:${p.email}`,
+    `ADR;TYPE=WORK:;;${esc(p.location)};;;;${esc(p.country)}`,
+    ...urls.map((u,i)=>`item${i+1}.URL:${u}`),
+    `NOTE:${esc(p.profession+" — Weddings, Corporate Events, Debuts, Pageants, Voice-Overs")}`,
+    "END:VCARD"
+  ];
+  const blob = new Blob([lines.join("\r\n")],{type:"text/vcard;charset=utf-8"});
+  const url = URL.createObjectURL(blob);
+  const ios = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform==="MacIntel" && navigator.maxTouchPoints>1);
+  if(ios){
+    // iPhone: opening the vCard shows the "Add to Contacts" screen
+    location.href = url;
+    toast("Tap “Add to Contacts” to save.");
+  }else{
+    // Android / desktop: downloads the .vcf; open it to add to Contacts
+    const a = document.createElement("a");
+    a.href = url; a.download = p.fullName.trim().toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"")+"-contact.vcf";
+    document.body.appendChild(a); a.click(); a.remove();
+    toast("Contact file downloaded. Open it to save to Contacts.");
+  }
+  setTimeout(()=>URL.revokeObjectURL(url),60000);
+}
+function toast(msg){
+  const t=$("#toast"); t.textContent=msg; t.classList.add("show");
+  clearTimeout(toast.t); toast.t=setTimeout(()=>t.classList.remove("show"),4500);
+}
+$$("[data-save]").forEach(b=>b.addEventListener("click",saveContact));
+
+/* ===== loader + hero ===== */
+window.addEventListener("load",()=>setTimeout(()=>{$("#loader").classList.add("done");countUp()},500));
+setTimeout(()=>$("#loader").classList.add("done"),3500); // safety fallback
+
+/* ===== bokeh lights ===== */
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+if(!reduce){
+  $("#bokeh").innerHTML = Array.from({length:14},()=>{
+    const s=14+Math.random()*46;
+    return `<span style="width:${s}px;height:${s}px;left:${Math.random()*100}%;top:${10+Math.random()*85}%;animation-duration:${9+Math.random()*10}s;animation-delay:-${Math.random()*12}s"></span>`}).join("");
+}
+
+/* ===== counters ===== */
+let counted=false;
+function countUp(){
+  if(counted) return; counted=true;
+  $$("[data-count]").forEach(el=>{
+    const end=+el.dataset.count, suf=el.dataset.suffix||"";
+    if(reduce){el.textContent=end+suf;return}
+    const t0=performance.now();
+    (function tick(t){const k=Math.min((t-t0)/1600,1);el.textContent=Math.round(end*(1-Math.pow(1-k,3)))+suf;if(k<1)requestAnimationFrame(tick)})(t0);
+  });
+}
+
+/* ===== scroll reveal ===== */
+const io = new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");$$(".reveal-img",e.target).forEach(i=>i.classList.add("in"));io.unobserve(e.target)}}),{threshold:.12});
+$$(".rv,.reveal-img").forEach((e,i)=>{e.style.transitionDelay=(i%3)*90+"ms";io.observe(e)});
+
+/* ===== mobile menu ===== */
+const menu=$("#menu"), burger=$("#burger");
+function toggleMenu(open){menu.classList.toggle("open",open);burger.setAttribute("aria-expanded",open);burger.innerHTML=`<i class="fa-solid ${open?"fa-xmark":"fa-bars"}"></i>`}
+burger.addEventListener("click",()=>toggleMenu(!menu.classList.contains("open")));
+$$("a",menu).forEach(a=>a.addEventListener("click",()=>toggleMenu(false)));
+
+/* ===== active nav, header, top button, parallax ===== */
+const spy = new IntersectionObserver(es=>es.forEach(e=>{
+  if(e.isIntersecting) $$(".menu a").forEach(a=>a.classList.toggle("active",a.getAttribute("href")==="#"+e.target.id))
+}),{rootMargin:"-45% 0px -50% 0px"});
+$$("[data-spy]").forEach(s=>spy.observe(s));
+const aboutImg=$(".about-img img");
+addEventListener("scroll",()=>{
+  const y=scrollY;
+  $("#hdr").classList.toggle("scrolled",y>30);
+  $("#top").classList.toggle("show",y>700);
+  if(!reduce&&aboutImg){const r=aboutImg.parentElement.getBoundingClientRect();if(r.top<innerHeight&&r.bottom>0)aboutImg.style.transform=`scale(1.12) translateY(${(r.top-innerHeight/2)*-.04}px)`}
+},{passive:true});
+$("#top").addEventListener("click",()=>scrollTo({top:0,behavior:reduce?"auto":"smooth"}));
+
+/* ===== button ripple ===== */
+document.addEventListener("click",e=>{
+  const b=e.target.closest(".btn"); if(!b) return;
+  const r=b.getBoundingClientRect(), d=Math.max(r.width,r.height), s=document.createElement("span");
+  s.className="ripple"; s.style.cssText=`width:${d}px;height:${d}px;left:${e.clientX-r.left-d/2}px;top:${e.clientY-r.top-d/2}px`;
+  b.appendChild(s); setTimeout(()=>s.remove(),600);
+});
+
+/* ===== audio: animate bars while playing, pause others ===== */
+$$(".demo audio").forEach(a=>{
+  const c=a.closest(".demo");
+  a.addEventListener("play",()=>{$$(".demo audio").forEach(o=>{if(o!==a)o.pause()});c.classList.add("playing")});
+  ["pause","ended"].forEach(ev=>a.addEventListener(ev,()=>c.classList.remove("playing")));
+});
+
+/* ===== lightbox ===== */
+const lb=$("#lb"); let cur=0;
+function show(i){cur=(i+photos.length)%photos.length;$("#lbi").src=photos[cur][0];$("#lbi").alt=photos[cur][1];$("#lbc").textContent=photos[cur][1]}
+function openLb(i){show(i);lb.classList.add("open");document.body.style.overflow="hidden";$("#lbx").focus()}
+function closeLb(){lb.classList.remove("open");document.body.style.overflow=""}
+$$(".shot").forEach(s=>s.addEventListener("click",()=>openLb(+s.dataset.i)));
+$("#lbx").onclick=closeLb;$("#lbp").onclick=()=>show(cur-1);$("#lbn").onclick=()=>show(cur+1);
+lb.addEventListener("click",e=>{if(e.target===lb)closeLb()});
+addEventListener("keydown",e=>{if(!lb.classList.contains("open"))return;if(e.key==="Escape")closeLb();if(e.key==="ArrowLeft")show(cur-1);if(e.key==="ArrowRight")show(cur+1)});
+let tx=0;lb.addEventListener("touchstart",e=>tx=e.touches[0].clientX,{passive:true});
+lb.addEventListener("touchend",e=>{const d=e.changedTouches[0].clientX-tx;if(Math.abs(d)>50)show(cur+(d<0?1:-1))});
+
+/* ===== inquiry form -> mailto (no backend) ===== */
+$("#inq").addEventListener("submit",e=>{
+  e.preventDefault();
+  const f=new FormData(e.target);
+  const body=`Name: ${f.get("name")}\nPhone: ${f.get("phone")}\nEvent type: ${f.get("type")}\nDate & venue: ${f.get("date")}\n\n${f.get("msg")}`;
+  location.href=`mailto:${profile.email}?subject=${encodeURIComponent("Booking Inquiry: "+f.get("type"))}&body=${encodeURIComponent(body)}`;
+});
+</script>
+</body>
+</html>

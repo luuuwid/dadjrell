@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>D&amp;M Elite Hosting Services | Event Hosting &amp; Voice-Over Services</title>
+<meta name="description" content="D&amp;M Elite Hosting Services provides professional event hosting, emcee, and voice-over services with elegance, energy, and excellence.">
+<meta name="theme-color" content="#eef0ff">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+/* =========================
+   D&M BRAND SYSTEM
+========================= */
+:root{
+  --dm-white:#ffffff; --dm-bg:#f7f8ff; --dm-bg2:#f1f3ff; --dm-indigo:#20234f; --dm-navy:#263d9e;
+  --dm-blue:#3956c8; --dm-electric:#318bff; --dm-violet:#827ce9; --dm-lavender:#b79bff; --dm-pink:#d45bd8;
+  --dm-muted:#606580; --dm-line:rgba(70,85,190,.15);
+  --dm-grad:linear-gradient(120deg,#263D9E 0%,#318BFF 20%,#827CE9 38%,#D45BD8 52%,#B79BFF 67%,#318BFF 84%,#263D9E 100%);
+  --dm-shadow:0 15px 45px rgba(55,70,160,.08); --dm-glow:0 18px 50px rgba(100,95,235,.22);
+  --serif:'Cormorant Garamond',Georgia,serif; --sans:'Montserrat',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+body{background:var(--dm-white);color:var(--dm-indigo);font-family:var(--sans);line-height:1.65;overflow-x:hidden;-webkit-tap-highlight-color:transparent}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.12}
+:focus-visible{outline:2px solid var(--dm-electric);outline-offset:3px}
+.wrap{width:min(1120px,100% - 40px);margin-inline:auto;position:relative;z-index:1}
+section{padding:92px 0;position:relative;overflow:hidden}
+.alt{background:linear-gradient(180deg,var(--dm-bg),var(--dm-bg2))}
+.sec-head{max-width:660px;margin-bottom:40px}
+.sec-head h2{font-size:clamp(2.1rem,6vw,3.3rem);margin-bottom:12px;letter-spacing:.01em}
+.sec-head p{color:var(--dm-muted)}
+.center{text-align:center;margin-inline:auto}
+.gtext{background:var(--dm-grad);background-size:220% auto;-webkit-background-clip:text;background-clip:text;color:transparent}
+.sub{font-size:clamp(1.7rem,4.5vw,2.3rem);margin:56px 0 8px}
+.subp{color:var(--dm-muted);margin-bottom:22px;max-width:560px}
+
+/* Decorative geometry + glow */
+.geo{position:absolute;pointer-events:none;z-index:0;border:1px solid rgba(110,100,230,.14);background:linear-gradient(135deg,rgba(130,124,233,.07),rgba(49,139,255,.03));transform:rotate(45deg);border-radius:6px}
+.g1{width:420px;height:420px;top:-170px;right:-120px}.g2{width:260px;height:260px;bottom:-90px;left:-70px}
+.g3{width:520px;height:520px;top:40%;left:-260px}
+.orb{position:absolute;pointer-events:none;border-radius:50%;filter:blur(70px);opacity:.5;z-index:0;animation:float 14s ease-in-out infinite alternate}
+.o1{width:340px;height:340px;background:#c9d8ff;top:-60px;left:-80px}.o2{width:300px;height:300px;background:#e3d6ff;bottom:-40px;right:-60px;animation-delay:-6s}
+@keyframes float{to{transform:translate(24px,30px)}}
+
+/* Loader */
+#loader{position:fixed;inset:0;z-index:999;background:#fff;display:grid;place-items:center;transition:opacity .6s,visibility .6s}
+#loader.done{opacity:0;visibility:hidden}
+.bars{display:flex;gap:5px;align-items:center;height:44px}
+.bars i{width:5px;height:100%;border-radius:3px;background:var(--dm-grad);animation:bar 1s ease-in-out infinite}
+.bars i:nth-child(2n){animation-delay:-.4s}.bars i:nth-child(3n){animation-delay:-.7s}.bars i:nth-child(4n){animation-delay:-.2s}
+@keyframes bar{0%,100%{transform:scaleY(.25)}50%{transform:scaleY(1)}}
+
+/* Navigation */
+header{position:fixed;top:0;left:0;right:0;z-index:100;padding-top:env(safe-area-inset-top,0);border-bottom:1px solid transparent;transition:background .3s,border-color .3s,backdrop-filter .3s}
+header.scrolled{background:rgba(255,255,255,.88);-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);border-color:var(--dm-line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:68px}
+.logo{display:flex;align-items:center;gap:12px}
+.logo img{width:46px;height:46px;object-fit:contain;border-radius:12px;border:1px solid var(--dm-line)}
+.logo span{display:flex;flex-direction:column;line-height:1.1}
+.logo b{font-family:var(--serif);font-size:1.5rem;letter-spacing:.14em}
+.logo small{font-size:.54rem;letter-spacing:.3em;color:var(--dm-muted);font-weight:600}
+@media(max-width:480px){.logo small{display:none}.logo img{width:40px;height:40px}}
+.menu{display:flex;gap:26px;list-style:none}
+.menu a{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--dm-muted);font-weight:500;padding:6px 0;border-bottom:1px solid transparent;transition:.25s}
+.menu a:hover,.menu a.active{color:var(--dm-blue);border-image:var(--dm-grad) 1}
+.burger{display:none;background:none;border:0;color:var(--dm-indigo);font-size:1.4rem;width:46px;height:46px;cursor:pointer}
+@media(max-width:900px){
+  .burger{display:block}
+  .menu{position:fixed;inset:0 0 0 auto;width:min(300px,80vw);background:#fff;flex-direction:column;gap:6px;padding:90px 28px;transform:translateX(100%);transition:transform .4s cubic-bezier(.2,.8,.2,1);border-left:1px solid var(--dm-line);box-shadow:-20px 0 50px rgba(55,70,160,.1)}
+  .menu.open{transform:none}
+  .menu a{font-size:.9rem;display:block;padding:12px 0}
+}
+
+/* Buttons */
+.btn{position:relative;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 26px;border-radius:50px;font:600 .78rem var(--sans);letter-spacing:.1em;text-transform:uppercase;cursor:pointer;border:1px solid rgba(57,86,200,.3);background:#fff;color:var(--dm-indigo);transition:transform .25s,box-shadow .25s,border-color .25s}
+.btn:hover{transform:translateY(-2px);border-color:var(--dm-violet);box-shadow:var(--dm-glow)}
+.btn.primary{background:var(--dm-grad);background-size:220% auto;background-position:0 0;color:#fff;border:0;min-height:56px;box-shadow:0 10px 30px rgba(80,90,220,.28);transition:transform .25s,box-shadow .25s,background-position .8s}
+.btn.primary:hover{background-position:100% 0}
+.btn.block{width:100%}
+.ripple{position:absolute;border-radius:50%;background:rgba(130,124,233,.35);transform:scale(0);animation:rip .6s linear;pointer-events:none}
+@keyframes rip{to{transform:scale(4);opacity:0}}
+
+/* Card system */
+.gc,.svc,.demo,.vid,.rev,.contact-card{background:rgba(255,255,255,.72);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border:1px solid rgba(70,85,190,.14);box-shadow:var(--dm-shadow);border-radius:20px}
+
+/* HOME */
+#home{min-height:100svh;padding:110px 0 70px;display:flex;align-items:center;background:radial-gradient(ellipse at 20% 0%,#e8eeff 0%,transparent 55%),radial-gradient(ellipse at 90% 80%,#efe6ff 0%,transparent 50%),#fff}
+.hero-grid{display:grid;gap:36px;align-items:center}
+@media(min-width:900px){.hero-grid{grid-template-columns:.95fr 1.05fr;gap:64px}}
+.logo-card{padding:10px;border-radius:30px;max-width:460px;margin-inline:auto;width:100%;background:rgba(255,255,255,.65);border:1px solid rgba(70,85,190,.14);box-shadow:var(--dm-glow);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px)}
+.logo-card img{width:100%;aspect-ratio:1/1;object-fit:contain;border-radius:22px;background:var(--dm-bg)}
+.hero-text{text-align:center}
+@media(min-width:900px){.hero-text{text-align:left}}
+.est{display:inline-flex;align-items:center;gap:12px;font-size:.72rem;letter-spacing:.3em;font-weight:600;color:var(--dm-blue)}
+.est::before,.est::after{content:"";width:34px;height:1px;background:var(--dm-grad)}
+@media(min-width:900px){.est::before{display:none}}
+.biz{font-size:clamp(3.6rem,15vw,6rem);font-weight:700;letter-spacing:.12em;margin:10px 0 0;line-height:1}
+.biz-sub{font-family:var(--serif);font-weight:500;font-size:clamp(1.05rem,4.2vw,1.55rem);letter-spacing:.34em;color:#4f4a9a;margin:8px 0 18px}
+.tagline{font-family:var(--serif);font-style:italic;font-size:1.35rem;line-height:1.4;margin-bottom:12px}
+.desc{color:var(--dm-muted);font-size:.93rem;max-width:520px;margin:0 auto 26px}
+@media(min-width:900px){.desc{margin-inline:0}}
+.cta-row{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+@media(min-width:900px){.cta-row{justify-content:flex-start}}
+.hero-bottom{display:grid;gap:22px;margin-top:46px}
+@media(min-width:900px){.hero-bottom{grid-template-columns:1.1fr .9fr;align-items:stretch}}
+.contact-card{padding:24px}
+.info{list-style:none;margin-bottom:16px}
+.info li+li{border-top:1px solid var(--dm-line)}
+.info a{display:flex;align-items:center;gap:14px;padding:12px 4px;min-height:50px;font-size:.93rem;word-break:break-word}
+.info i,.svc i,.chips i,.ico{background:var(--dm-grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.info i{width:20px;text-align:center}
+.quick{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:14px}
+.quick a{display:flex;flex-direction:column;align-items:center;gap:6px;padding:12px 2px;min-height:66px;border:1px solid var(--dm-line);border-radius:16px;font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;font-weight:600;background:#fff;transition:.25s}
+.quick a i{font-size:1.15rem;background:var(--dm-grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.quick a:hover{transform:translateY(-3px);box-shadow:var(--dm-glow)}
+.social{display:flex;gap:12px;margin-top:16px;justify-content:center}
+.social a{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;border:1px solid var(--dm-line);background:#fff;color:var(--dm-blue);font-size:1.1rem;transition:.25s}
+.social a:hover{background:var(--dm-grad);color:#fff;transform:translateY(-3px)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:26px 10px;text-align:center;align-content:center}
+.stats b{display:block;font-family:var(--serif);font-size:clamp(2.4rem,8vw,3.4rem);line-height:1;background:var(--dm-grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.stats span{display:block;margin-top:6px;font-size:.66rem;letter-spacing:.1em;color:var(--dm-muted);text-transform:uppercase}
+
+/* ABOUT */
+.split{display:grid;gap:40px;align-items:center}
+@media(min-width:800px){.split{grid-template-columns:.9fr 1.1fr;gap:64px}}
+.ph{position:relative;overflow:hidden;background:linear-gradient(135deg,#e9edff,#f4eeff);display:grid;place-items:center}
+.ph::before{content:"\f030";font-family:"Font Awesome 6 Free";font-weight:900;color:rgba(110,100,230,.3);font-size:2rem;position:absolute}
+.ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.ph.missing{background:repeating-linear-gradient(45deg,#eef0ff 0 14px,#f6f2ff 14px 28px)}
+.ph.missing::before{top:36%}
+.ph.missing::after{content:"PHOTO HERE\A" attr(data-file);white-space:pre;text-align:center;position:absolute;left:8px;right:8px;top:calc(36% + 2.6rem);font:600 .66rem/1.5 var(--sans);letter-spacing:.08em;color:var(--dm-blue);word-break:break-all}
+.about-img{aspect-ratio:4/5;border-radius:200px 200px 24px 24px;border:1px solid var(--dm-line);box-shadow:var(--dm-glow)}
+.about-img img{transform:scale(1.12)}
+.about p{color:var(--dm-muted);margin-bottom:24px}
+.chips{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px}
+.chips span{display:flex;align-items:center;gap:10px;font-size:.82rem;font-weight:500;padding:12px 16px;border:1px solid var(--dm-line);border-radius:14px;background:rgba(255,255,255,.8)}
+
+/* Service cards */
+.grid{display:grid;gap:18px;grid-template-columns:repeat(auto-fill,minmax(250px,1fr))}
+.svc{padding:28px 24px;position:relative;overflow:hidden;transition:transform .3s,box-shadow .3s,border-color .3s}
+.svc:hover{transform:translateY(-5px);box-shadow:var(--dm-glow);border-color:rgba(130,124,233,.5)}
+.svc i{font-size:1.55rem;margin-bottom:16px;display:block}
+.svc h3{font-size:1.45rem;margin-bottom:6px}
+.svc p{font-size:.88rem;color:var(--dm-muted)}
+.vo-card::after{content:"";position:absolute;right:-6px;bottom:-4px;width:120px;height:44px;opacity:.14;background:repeating-linear-gradient(90deg,var(--dm-violet) 0 4px,transparent 4px 10px);-webkit-mask:linear-gradient(0deg,#000 20%,transparent);mask:linear-gradient(0deg,#000 20%,transparent)}
+
+/* Demos */
+.demo{padding:22px;transition:.3s}
+.demo.playing{border-color:var(--dm-violet);box-shadow:var(--dm-glow)}
+.demo h3{font-size:1.35rem;display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:14px}
+.demo .bars{height:24px;opacity:.4}.demo .bars i{width:3px;animation-play-state:paused}
+.demo.playing .bars{opacity:1}.demo.playing .bars i{animation-play-state:running}
+.wave{height:34px;margin-bottom:12px;border-radius:10px;opacity:.55;background:repeating-linear-gradient(90deg,rgba(130,124,233,.55) 0 3px,transparent 3px 8px);-webkit-mask:linear-gradient(90deg,transparent,#000 15%,#000 85%,transparent);mask:linear-gradient(90deg,transparent,#000 15%,#000 85%,transparent)}
+.demo audio{width:100%;height:44px}
+
+/* Videos */
+.vid{overflow:hidden;transition:transform .3s,box-shadow .3s}
+.vid:hover{transform:translateY(-4px);box-shadow:var(--dm-glow)}
+.vid video{width:100%;aspect-ratio:16/9;display:block;background:#e9ecff;object-fit:cover}
+.vid p{padding:14px 18px;font-size:.88rem;font-weight:500}
+.vid i{margin-right:8px;background:var(--dm-grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+/* CENTER VIDEO PLAY / PAUSE BUTTON */
+.vid .video-wrap{
+  position:relative;
+  overflow:hidden;
+  background:#000;
+}
+
+.vid .video-wrap video{
+  width:100%;
+  aspect-ratio:16/9;
+  display:block;
+  object-fit:cover;
+  cursor:pointer;
+}
+
+.video-play-btn{
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  width:72px;
+  height:72px;
+  border:none;
+  border-radius:50%;
+  background:rgba(0,0,0,.70);
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:30px;
+  cursor:pointer;
+  z-index:5;
+  transition:
+    opacity .25s ease,
+    transform .25s ease,
+    background .25s ease;
+}
+
+.video-play-btn:hover{
+  background:rgba(0,0,0,.88);
+  transform:translate(-50%,-50%) scale(1.08);
+}
+
+.video-play-btn i{
+  margin:0;
+  background:none;
+  -webkit-background-clip:initial;
+  background-clip:initial;
+  color:#fff;
+}
+
+/* hide button after video begins playing */
+.video-wrap.playing .video-play-btn{
+  opacity:0;
+}
+
+/* show pause button when hovering/tapping playing video */
+.video-wrap.playing:hover .video-play-btn{
+  opacity:1;
+}
+
+@media(max-width:600px){
+  .video-play-btn{
+    width:62px;
+    height:62px;
+    font-size:25px;
+  }
+}
+/* ari number 1 edit */
+
+/* Gallery */
+.gallery{columns:2;column-gap:14px}
+@media(min-width:800px){.gallery{columns:3;column-gap:18px}}
+.shot{break-inside:avoid;margin-bottom:14px;position:relative;border-radius:22px;overflow:hidden;cursor:pointer;border:1px solid var(--dm-line);box-shadow:var(--dm-shadow);display:block;width:100%;padding:0;background:none;color:inherit;font:inherit;text-align:left;transition:border-color .3s,box-shadow .3s}
+@media(min-width:800px){.shot{margin-bottom:18px}}
+.shot:hover{border-color:var(--dm-violet);box-shadow:var(--dm-glow)}
+.shot .ph{aspect-ratio:4/5}
+.shot:nth-child(3n+2) .ph{aspect-ratio:1/1}.shot:nth-child(4n) .ph{aspect-ratio:4/6}
+.shot img{transition:transform .6s}
+.shot:hover img{transform:scale(1.06)}
+.shot .cap{position:absolute;left:0;right:0;bottom:0;padding:44px 16px 14px;font-size:.8rem;font-weight:500;background:linear-gradient(transparent,rgba(32,35,79,.78));color:#fff}
+.reveal-img{clip-path:inset(0 0 100% 0);transition:clip-path .9s cubic-bezier(.2,.8,.2,1)}
+.reveal-img.in{clip-path:inset(0)}
+#lb{position:fixed;inset:0;z-index:300;background:rgba(24,27,70,.93);display:grid;place-items:center;opacity:0;visibility:hidden;transition:.35s;padding:20px}
+#lb.open{opacity:1;visibility:visible}
+#lb img{max-height:78vh;max-width:100%;border-radius:14px;transform:scale(.94);transition:transform .35s}
+#lb.open img{transform:none}
+#lb p{text-align:center;color:#fff;margin-top:12px;font-size:.9rem}
+.lb-b{position:absolute;width:52px;height:52px;border-radius:50%;border:1px solid rgba(255,255,255,.3);background:rgba(255,255,255,.12);color:#fff;font-size:1.1rem;cursor:pointer}
+#lbx{top:max(16px,env(safe-area-inset-top));right:16px}#lbp{left:12px;top:50%}#lbn{right:12px;top:50%}
+
+/* Reviews */
+.slider{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;padding:6px 2px 18px;scrollbar-width:thin;scrollbar-color:var(--dm-violet) transparent}
+.rev{flex:0 0 min(86%,380px);scroll-snap-align:start;padding:34px 28px 26px;position:relative}
+.rev::before{content:"\201C";position:absolute;top:2px;right:22px;font-family:var(--serif);font-size:6rem;line-height:1;background:var(--dm-grad);-webkit-background-clip:text;background-clip:text;color:transparent;opacity:.5}
+.rev .st{letter-spacing:4px;margin-bottom:12px;background:var(--dm-grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.rev q{display:block;font-family:var(--serif);font-size:1.35rem;line-height:1.4;quotes:none;margin-bottom:18px}
+.rev b{display:block;font-size:.86rem}.rev small{color:var(--dm-muted)}
+
+/* Contact */
+#contact{background:radial-gradient(ellipse at 50% 100%,#e7e9ff,#fff 70%);text-align:center}
+.btns{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin:26px 0}
+form{max-width:580px;margin:40px auto 0;text-align:left;display:grid;gap:12px;padding:28px 24px}
+form h3{font-size:1.6rem;text-align:center}
+form small{text-align:center;color:var(--dm-muted);font-size:.78rem}
+input,select,textarea{width:100%;padding:15px 18px;border-radius:16px;border:1px solid rgba(70,85,190,.16);background:rgba(255,255,255,.8);color:var(--dm-indigo);font:inherit;font-size:16px;transition:border-color .25s,box-shadow .25s}
+input:focus,select:focus,textarea:focus{outline:0;border-color:var(--dm-violet);box-shadow:0 0 0 4px rgba(130,124,233,.18)}
+textarea{min-height:110px;resize:vertical}
+.two{display:grid;gap:12px}
+@media(min-width:520px){.two{grid-template-columns:1fr 1fr}}
+footer{padding:34px 0 120px;text-align:center;color:var(--dm-muted);font-size:.78rem;border-top:1px solid var(--dm-line);background:var(--dm-bg)}
+footer img{width:84px;height:84px;object-fit:contain;margin:0 auto 12px;border-radius:18px;border:1px solid var(--dm-line)}
+
+/* Sticky mobile bar + top button */
+#bar{position:fixed;left:0;right:0;bottom:0;z-index:90;display:grid;grid-template-columns:repeat(4,1fr);background:rgba(255,255,255,.93);-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);border-top:1px solid var(--dm-line);padding:6px 6px calc(6px + env(safe-area-inset-bottom,0))}
+#bar a,#bar button{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;min-height:54px;background:none;border:0;color:var(--dm-indigo);font:600 .62rem var(--sans);letter-spacing:.08em;text-transform:uppercase;cursor:pointer}
+#bar i{color:var(--dm-blue);font-size:1.15rem}
+#bar .hot i{color:#fff;background:var(--dm-grad);width:36px;height:36px;display:grid;place-items:center;border-radius:50%;font-size:1rem;box-shadow:0 6px 16px rgba(80,90,220,.35)}
+#top{position:fixed;right:16px;bottom:88px;z-index:90;width:46px;height:46px;border-radius:50%;border:1px solid var(--dm-line);background:rgba(255,255,255,.92);color:var(--dm-blue);cursor:pointer;opacity:0;visibility:hidden;transition:.3s;box-shadow:var(--dm-shadow)}
+#top.show{opacity:1;visibility:visible}
+@media(min-width:901px){#bar{display:none}footer{padding-bottom:34px}#top{bottom:24px}}
+
+/* Reveal motion */
+.rv{opacity:0;transform:translateY(24px);transition:opacity .8s,transform .8s}
+.rv.in{opacity:1;transform:none}
+.hero-in>*{opacity:0;transform:translateY(18px);animation:up .9s cubic-bezier(.2,.8,.2,1) forwards}
+.hero-in>*:nth-child(2){animation-delay:.15s}.hero-in>*:nth-child(3){animation-delay:.3s}.hero-in>*:nth-child(4){animation-delay:.45s}.hero-in>*:nth-child(5){animation-delay:.6s}.hero-in>*:nth-child(6){animation-delay:.75s}
+@keyframes up{to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+  .rv,.hero-in>*{opacity:1;transform:none}.reveal-img{clip-path:none}
+}
+</style>
+</head>
+<body>
+
+<div id="loader" aria-hidden="true"><div class="bars"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+
+<header id="hdr">
+  <div class="wrap nav">
+    <a href="#home" class="logo" aria-label="D&amp;M Elite Hosting Services home">
+      <img src="Cover.png" alt="D&amp;M Elite Hosting Services logo">
+      <span><b>D&amp;M</b><small>ELITE HOSTING SERVICES</small></span>
+    </a>
+    <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false"><i class="fa-solid fa-bars"></i></button>
+    <ul class="menu" id="menu">
+      <li><a href="#home">Home</a></li><li><a href="#about">About</a></li><li><a href="#hosting">Hosting</a></li>
+      <li><a href="#voice">Voice-Over</a></li><li><a href="#portfolio">Portfolio</a></li><li><a href="#reviews">Reviews</a></li><li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</header>
+
+<main>
+<!-- ============ 1. HOME / DIGITAL BUSINESS CARD ============ -->
+<section id="home" data-spy>
+  <div class="geo g1"></div><div class="geo g2"></div><div class="orb o1"></div><div class="orb o2"></div>
+  <div class="wrap">
+    <div class="hero-grid">
+      <div class="logo-card hero-in"><img src="Cover.png" alt="D&amp;M Elite Hosting Services official logo"></div>
+      <div class="hero-text hero-in">
+        <div class="est">EST. 2026</div>
+        <h1 class="biz gtext">D&amp;M</h1>
+        <p class="biz-sub">ELITE HOSTING SERVICES</p>
+        <p class="tagline">“Elegance in Every Moment, Excellence in Every Event.”</p>
+        <p class="desc">Professional event hosting and voice-over services crafted to bring confidence, elegance, energy, and memorable experiences to every occasion.</p>
+        <div class="cta-row">
+          <a class="btn primary" href="#contact"><i class="fa-solid fa-calendar-check"></i> Book D&amp;M</a>
+          <a class="btn" href="#hosting"><i class="fa-solid fa-gem"></i> View Services</a>
+          <button class="btn" data-save><i class="fa-solid fa-address-book"></i> Save Contact</button>
+        </div>
+      </div>
+    </div>
+    <div class="hero-bottom">
+      <div class="contact-card rv">
+        <ul class="info">
+          <li><a data-href="tel" href="#"><i class="fa-solid fa-phone"></i><span data-bind="phone">09538598181</span></a></li>
+          <li><a data-href="tel" href="#"><i class="fa-solid fa-phone"></i><span data-bind="phone">09700232833</span></a></li>
+          <li><a data-href="mailto" href="#"><i class="fa-solid fa-envelope"></i><span data-bind="email">dmelitehostingservices@gmail.com</span></a></li>
+          <li><a data-href="map" href="#" target="_blank" rel="noopener"><i class="fa-solid fa-location-dot"></i><span data-bind="location">City, Philippines</span></a></li>
+        </ul>
+        <div class="quick">
+          <a data-href="tel" href="#"><i class="fa-solid fa-phone"></i>Call</a>
+          <a data-href="sms" href="#"><i class="fa-solid fa-comment-sms"></i>Message</a>
+          <a data-href="mailto" href="#"><i class="fa-solid fa-envelope"></i>Email</a>
+          <a data-href="messenger" href="#" target="_blank" rel="noopener"><i class="fa-brands fa-facebook-messenger"></i>Messenger</a>
+        </div>
+        <button class="btn primary block" data-save aria-label="Save contact to phone"><i class="fa-solid fa-address-book"></i> Save Contact</button>
+        <div class="social">
+          <a data-href="facebook" href="#" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a data-href="instagram" href="#" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a data-href="tiktok" href="#" target="_blank" rel="noopener" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+          <a data-href="messenger" href="#" target="_blank" rel="noopener" aria-label="Messenger"><i class="fa-brands fa-facebook-messenger"></i></a>
+        </div>
+      </div>
+      <!-- STATS: edit data-count numbers -->
+      <div class="stats gc rv">
+        <div><b data-count="50" data-suffix="+">0</b><span>Events Hosted</span></div>
+        <div><b data-count="10" data-suffix="+">0</b><span>Voice Projects</span></div>
+        <div><b data-count="2" data-suffix="+">0</b><span>Years Experience</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 2. ABOUT D&M ============ -->
+<section id="about" class="alt" data-spy>
+  <div class="geo g3"></div>
+  <div class="wrap split about">
+    <!-- PHOTO: replace hero-event.jpg -->
+    <div class="ph about-img reveal-img" data-file="hero-event.jpg"><img src="hero-event.jpg" alt="D&amp;M hosting a live event" loading="lazy" onerror="this.parentElement.classList.add('missing');this.remove()"></div>
+    <div class="rv">
+      <div class="sec-head" style="margin-bottom:18px"><h2>Elevating Every Moment</h2></div>
+      <p>D&amp;M Elite Hosting Services delivers polished, engaging, and professional event hosting designed to keep programs flowing smoothly while creating memorable experiences for every audience.</p>
+      <div class="chips">
+        <span><i class="fa-solid fa-star"></i>Professional Stage Presence</span><span><i class="fa-solid fa-users"></i>Audience Engagement</span>
+        <span><i class="fa-solid fa-list-check"></i>Program Coordination</span><span><i class="fa-solid fa-comments"></i>Confident Communication</span>
+        <span><i class="fa-solid fa-shuffle"></i>Smooth Transitions</span><span><i class="fa-solid fa-sliders"></i>Flexible Hosting Style</span>
+        <span><i class="fa-solid fa-language"></i>English &amp; Filipino Hosting</span><span><i class="fa-solid fa-clipboard-check"></i>Event Preparation</span>
+        <span><i class="fa-solid fa-microphone-lines"></i>Voice-Over Services</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 3. EVENT HOSTING SERVICES ============ -->
+<section id="hosting" data-spy>
+  <div class="orb o2"></div>
+  <div class="wrap">
+    <div class="sec-head rv"><h2>Event Hosting Services</h2><p>From intimate celebrations to large-scale programs, D&amp;M brings confidence, energy, and professionalism to every stage.</p></div>
+    <div class="grid" id="hostGrid"></div>
+  </div>
+</section>
+
+<!-- ============ 4. EVENT PORTFOLIO ============ -->
+<section id="portfolio" class="alt" data-spy>
+  <div class="geo g1"></div>
+  <div class="wrap">
+    <div class="sec-head rv"><h2>Moments with D&amp;M</h2><p>From intimate celebrations to grand occasions, every event becomes part of the D&amp;M story. Tap a photo to view it larger.</p></div>
+    <div class="gallery" id="galleryGrid"></div>
+  </div>
+</section>
+
+<!-- ============ 5-7. VOICE-OVER SERVICES, DEMOS, VIDEOS ============ -->
+<section id="voice" data-spy>
+  <div class="geo g2"></div><div class="orb o1"></div>
+  <div class="wrap">
+    <div class="sec-head rv"><h2>The Voice Behind Your Story</h2><p>Professional voice-over delivery for events, brands, businesses, campaigns, presentations, and digital content.</p></div>
+    <div class="grid" id="voGrid"></div>
+
+    <h3 class="sub rv">Voice-Over Demos</h3>
+    <p class="subp rv">Press play to hear the range of D&amp;M voice work.</p>
+    <!-- AUDIO: replace these mp3 files -->
+    <div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(280px,1fr))">
+      <div class="demo rv"><h3>Commercial Demo <div class="bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div></h3><div class="wave" aria-hidden="true"></div><audio controls preload="none" src="vo-commercial.mp3"></audio></div>
+      <div class="demo rv"><h3>Corporate / AVP <div class="bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div></h3><div class="wave" aria-hidden="true"></div><audio controls preload="none" src="vo-corporate.mp3"></audio></div>
+      <div class="demo rv"><h3>Narration <div class="bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div></h3><div class="wave" aria-hidden="true"></div><audio controls preload="none" src="vo-narration.mp3"></audio></div>
+      <div class="demo rv"><h3>Event Voice-Over <div class="bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div></h3><div class="wave" aria-hidden="true"></div><audio controls preload="none" src="vo-event.mp3"></audio></div>
+    </div>
+
+    <h3 class="sub rv">D&amp;M in Action</h3>
+    <p class="subp rv">Experience the energy, confidence, and atmosphere D&amp;M brings to every event.</p>
+    <!-- VIDEO: replace mp4 files (add poster="thumb.jpg" if you like) -->
+
+    <!-- Ari number 2 -->
+
+    <div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(290px,1fr))">
+
+  <div class="vid rv">
+    <div class="video-wrap">
+      <video preload="metadata" playsinline src="vid1.mp4"></video>
+      <button class="video-play-btn" type="button" aria-label="Play video">
+        <i class="fa-solid fa-play"></i>
+      </button>
+    </div>
+    <p><i class="fa-solid fa-film"></i>Hosting Highlight Reel</p>
+  </div>
+
+  <div class="vid rv">
+    <div class="video-wrap">
+      <video preload="metadata" playsinline src="vid2.mp4"></video>
+      <button class="video-play-btn" type="button" aria-label="Play video">
+        <i class="fa-solid fa-play"></i>
+      </button>
+    </div>
+    <p><i class="fa-solid fa-ring"></i>Wedding Hosting</p>
+  </div>
+
+  <div class="vid rv">
+    <div class="video-wrap">
+      <video preload="metadata" playsinline src="vid3.mp4"></video>
+      <button class="video-play-btn" type="button" aria-label="Play video">
+        <i class="fa-solid fa-play"></i>
+      </button>
+    </div>
+    <p><i class="fa-solid fa-briefcase"></i>Corporate Hosting</p>
+  </div>
+
+  <div class="vid rv">
+    <div class="video-wrap">
+      <video preload="metadata" playsinline src="video-voiceover.mp4"></video>
+      <button class="video-play-btn" type="button" aria-label="Play video">
+        <i class="fa-solid fa-play"></i>
+      </button>
+    </div>
+    <p><i class="fa-solid fa-microphone"></i>Voice-Over Sample</p>
+  </div>
+
+  <div class="vid rv">
+    <div class="video-wrap">
+      <video preload="metadata" playsinline src="video-events.mp4"></video>
+      <button class="video-play-btn" type="button" aria-label="Play video">
+        <i class="fa-solid fa-play"></i>
+      </button>
+    </div>
+    <p><i class="fa-solid fa-champagne-glasses"></i>Event Highlights</p>
+  </div>
+
+</div>
+</section>
+
+<!-- ============ 8-9. REVIEWS + WHY CHOOSE D&M ============ -->
+<section id="reviews" class="alt" data-spy>
+  <div class="geo g3"></div>
+  <div class="wrap">
+    <div class="sec-head rv"><h2>What Clients Say</h2></div>
+    <!-- TESTIMONIALS: replace names and quotes -->
+    <div class="slider rv">
+      <div class="rev"><div class="st">★★★★★</div><q>Professional, energetic, and very easy to work with. Our guests stayed engaged throughout the entire program.</q><b>Client Name</b><small>Wedding Client</small></div>
+      <div class="rev"><div class="st">★★★★★</div><q>The program flowed smoothly and every transition felt natural.</q><b>Client Name</b><small>Corporate Event</small></div>
+      <div class="rev"><div class="st">★★★★★</div><q>Excellent voice quality and very professional delivery.</q><b>Client Name</b><small>Voice-Over Client</small></div>
+    </div>
+    <h3 class="sub rv">Why Choose D&amp;M</h3>
+    <div class="grid" id="whyGrid" style="margin-top:22px"></div>
+  </div>
+</section>
+
+<!-- ============ 10. CONTACT / BOOKING ============ -->
+<section id="contact" data-spy>
+  <div class="geo g1"></div><div class="orb o1"></div>
+  <div class="wrap">
+    <div class="sec-head center rv"><h2 class="gtext">Let’s Make Your Event Memorable</h2><p>Tell us about your event and let D&amp;M help create an experience your guests will remember.</p></div>
+    <div class="btns rv">
+      <a class="btn primary" data-href="mailto" data-subject="Event Booking Inquiry" href="#"><i class="fa-solid fa-calendar-check"></i> Book D&amp;M</a>
+      <a class="btn" data-href="tel" href="#"><i class="fa-solid fa-phone"></i> Call Now</a>
+      <a class="btn" data-href="sms" href="#"><i class="fa-solid fa-comment-sms"></i> Message</a>
+      <a class="btn" data-href="mailto" href="#"><i class="fa-solid fa-envelope"></i> Email</a>
+      <button class="btn" data-save><i class="fa-solid fa-address-book"></i> Save Contact</button>
+    </div>
+    <div class="social rv">
+      <a data-href="facebook" href="#" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+      <a data-href="instagram" href="#" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+      <a data-href="tiktok" href="#" target="_blank" rel="noopener" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+      <a data-href="messenger" href="#" target="_blank" rel="noopener" aria-label="Messenger"><i class="fa-brands fa-facebook-messenger"></i></a>
+    </div>
+    <!-- Inquiry form: opens the email app with details filled in (no server involved) -->
+    <form id="inq" class="gc rv">
+      <h3>Send an Inquiry</h3>
+      <div class="two"><input name="name" placeholder="Name" required autocomplete="name"><input name="phone" type="tel" placeholder="Phone number" autocomplete="tel"></div>
+      <select name="type" aria-label="Event type"><option>Wedding</option><option>Corporate Event</option><option>Debut</option><option>Birthday / Private Event</option><option>Pageant</option><option>Product Launch</option><option>Conference</option><option>Formal Program</option><option>Voice-Over Project</option><option>Other</option></select>
+      <div class="two"><input name="date" placeholder="Event date"><input name="venue" placeholder="Venue"></div>
+      <textarea name="msg" placeholder="Message"></textarea>
+      <button class="btn primary" type="submit"><i class="fa-solid fa-paper-plane"></i> Open Email Draft</button>
+      <small>This opens your email app with your details ready to send.</small>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap"><img src="Cover.png" alt="D&amp;M Elite Hosting Services logo">© <span id="yr"></span> <span data-bind="businessName"></span> · Est. 2026. Developed by: Jhon Luid Abellonar</div></footer>
+
+<!-- Sticky mobile bar -->
+<nav id="bar" aria-label="Quick contact">
+  <a data-href="tel" href="#"><i class="fa-solid fa-phone"></i>Call</a>
+  <a data-href="sms" href="#"><i class="fa-solid fa-comment-sms"></i>Message</a>
+  <button data-save class="hot"><i class="fa-solid fa-address-book"></i>Save</button>
+  <a href="#contact"><i class="fa-solid fa-calendar-check"></i>Book</a>
+</nav>
+<button id="top" aria-label="Scroll to top"><i class="fa-solid fa-chevron-up"></i></button>
+
+<div id="lb" role="dialog" aria-modal="true" aria-label="Photo viewer">
+  <button class="lb-b" id="lbx" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+  <button class="lb-b" id="lbp" aria-label="Previous photo"><i class="fa-solid fa-chevron-left"></i></button>
+  <button class="lb-b" id="lbn" aria-label="Next photo"><i class="fa-solid fa-chevron-right"></i></button>
+  <figure><img id="lbi" alt=""><p id="lbc"></p></figure>
+</div>
+
+<script>
+/* ==============================
+   BUSINESS INFORMATION
+   EDIT THESE DETAILS
+================================ */
+const profile = {
+  businessName: "D&M ELITE HOSTING SERVICES",
+  contactName: "D&M Elite Hosting Services",
+  profession: "Event Hosting • Emcee • Voice-Over Services",
+  phone: "09538598181",
+  phone:"09700232833",
+  email: "dmelitehostingservices@gmail.com",
+  location: "Palompon, Leyte, Philippines",
+  country: "Philippines",
+  website: "https://yourwebsite.com",
+  facebook: "https://www.facebook.com/dmelitehostingservices",
+  instagram: "https://www.instagram.com/dmelitehostingservices/",
+  tiktok: "https://www.tiktok.com/@dmelitehostingservices?_r=1&_t=ZS-9AISqTTlzM7",
+  messenger: "https://www.facebook.com/dadj.corn"
+};
+
+/* ==============================
+   GALLERY — edit filenames/captions
+================================ */
+const photos = [
+  ["p1.jpeg","Baccalaureate Luncheon"],["p2.jpeg","Host"],["p3.jpeg","Host"],["p4.jpeg","Host"],
+  ["p5.jpeg","Baccalaureate Luncheon"],["p6.jpeg","Host"],["p7.jpeg","Baccalaureate Luncheon"],["7.png","About Us"]
+];
+
+/* ==============================
+   HOSTING SERVICES — edit text/icons
+================================ */
+const hosting = [
+  ["fa-ring","Wedding Hosting","Warm, polished hosting from the entrance to the last dance."],
+  ["fa-building","Corporate Events","Keeps programs on time and on message for teams and guests."],
+  ["fa-cake-candles","Debut Hosting","Makes the 18 roses, speeches, and surprises flow beautifully."],
+  ["fa-champagne-glasses","Birthdays &amp; Private Events","Fun, personal hosting that gets every guest involved."],
+  ["fa-crown","Pageants","Confident, clear delivery for contestants and audiences."],
+  ["fa-rocket","Product Launches","Builds excitement and presents your brand with energy."],
+  ["fa-school","School &amp; Community Events","Engaging hosting for programs of any size."],
+  ["fa-award","Awarding Ceremonies","Gives every winner and sponsor a proper moment."],
+  ["fa-people-group","Conferences","Clear moderation, introductions, and smooth transitions."],
+  ["fa-scroll","Formal Programs","Respectful, well-paced hosting for official occasions."]
+];
+
+/* ==============================
+   VOICE-OVER SERVICES — edit text/icons
+================================ */
+const vo = [
+  ["fa-bullhorn","Commercial Voice-Over","TV, radio, and online ads with a convincing read."],
+  ["fa-film","AVP Narration","Clear narration for audio-visual presentations."],
+  ["fa-microphone-lines","Event Voice-Over","Announcements and voice-of-god for live events."],
+  ["fa-clapperboard","Promotional Videos","A voice that sells your product or service."],
+  ["fa-hashtag","Social Media Content","Short, punchy reads for reels, ads, and posts."],
+  ["fa-graduation-cap","Educational Narration","Easy-to-follow reads for lessons and e-learning."],
+  ["fa-chart-line","Corporate Presentations","Professional narration for company materials."],
+  ["fa-radio","Radio / Online Ads","Broadcast-ready spots delivered on schedule."]
+];
+
+/* ==============================
+   WHY CHOOSE D&M — edit text/icons
+================================ */
+const why = [
+  ["fa-star","Professional Stage Presence","Calm, confident, and in command of the room."],
+  ["fa-users","Audience Engagement","Guests stay involved from start to finish."],
+  ["fa-sliders","Flexible Hosting Style","Formal, casual, or both — matched to your event."],
+  ["fa-microphone","Clear &amp; Powerful Voice","Well-projected and easy to understand."],
+  ["fa-handshake","Reliable Communication","Quick replies and a clear plan before the big day."],
+  ["fa-wand-magic-sparkles","Customized Event Experience","Every program is tailored to your story."],
+  ["fa-diagram-next","Smooth Program Flow","Seamless transitions from the first cue to the final toast."],
+  ["fa-clipboard-check","Professional Coordination","Organized preparation with organizers, suppliers, and crew."]
+];
+
+/* ===== helpers ===== */
+const $ = (s,c=document)=>c.querySelector(s), $$=(s,c=document)=>[...c.querySelectorAll(s)];
+const digits = profile.phone.replace(/[^\d+]/g,"");
+const card = (a,cls="")=>`<div class="svc rv ${cls}"><i class="fa-solid ${a[0]}"></i><h3>${a[1]}</h3><p>${a[2]}</p></div>`;
+$("#hostGrid").innerHTML = hosting.map(a=>card(a)).join("");
+$("#voGrid").innerHTML = vo.map(a=>card(a,"vo-card")).join("");
+$("#whyGrid").innerHTML = why.map(a=>card(a)).join("");
+$("#galleryGrid").innerHTML = photos.map((p,i)=>`<button class="shot rv" data-i="${i}" aria-label="Open photo: ${p[1]}"><div class="ph reveal-img" data-file="${p[0]}"><img src="${p[0]}" alt="${p[1]}" loading="lazy" onerror="this.parentElement.classList.add('missing');this.remove()"></div><span class="cap">${p[1]}</span></button>`).join("");
+
+/* ===== bind business data to the page ===== */
+$$("[data-bind]").forEach(e=>e.textContent = profile[e.dataset.bind]);
+const links = {
+  tel:"tel:"+digits, sms:"sms:"+digits, mailto:"mailto:"+profile.email,
+  map:"https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(profile.location),
+  facebook:profile.facebook, instagram:profile.instagram, tiktok:profile.tiktok, messenger:profile.messenger
+};
+$$("[data-href]").forEach(a=>{
+  let h = links[a.dataset.href];
+  if(a.dataset.subject) h += "?subject="+encodeURIComponent(a.dataset.subject);
+  a.href = h;
+});
+$("#yr").textContent = new Date().getFullYear();
+
+/* ===== SAVE CONTACT (vCard .vcf) ===== */
+function esc(s){return String(s).replace(/\\/g,"\\\\").replace(/;/g,"\\;").replace(/,/g,"\\,").replace(/\n/g,"\\n")}
+function saveContact(){
+  const p = profile, urls = [p.website,p.facebook,p.instagram,p.tiktok].filter(u=>u&&u!=="#");
+  const lines = [
+    "BEGIN:VCARD","VERSION:3.0",
+    `N:${esc(p.contactName)};;;;`,
+    `FN:${esc(p.contactName)}`,`ORG:${esc(p.contactName)}`,`TITLE:${esc(p.profession)}`,
+    `TEL;TYPE=CELL:${digits}`,`EMAIL;TYPE=INTERNET:${p.email}`,
+    `ADR;TYPE=WORK:;;${esc(p.location)};;;;${esc(p.country)}`,
+    ...urls.map((u,i)=>`item${i+1}.URL:${u}`),
+    `NOTE:${esc(p.contactName+" — "+p.profession)}`,
+    "END:VCARD"
+  ];
+  const blob = new Blob([lines.join("\r\n")],{type:"text/vcard;charset=utf-8"});
+  const url = URL.createObjectURL(blob), a = document.createElement("a");
+  a.href = url; a.download = p.contactName.trim().toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"")+"-contact.vcf";
+  document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(()=>URL.revokeObjectURL(url),1500);
+}
+$$("[data-save]").forEach(b=>b.addEventListener("click",saveContact));
+
+/* ===== loader + counters ===== */
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+window.addEventListener("load",()=>setTimeout(()=>{$("#loader").classList.add("done");countUp()},500));
+setTimeout(()=>$("#loader").classList.add("done"),3500); // safety fallback
+let counted=false;
+function countUp(){
+  if(counted) return; counted=true;
+  $$("[data-count]").forEach(el=>{
+    const end=+el.dataset.count, suf=el.dataset.suffix||"";
+    if(reduce){el.textContent=end+suf;return}
+    const t0=performance.now();
+    (function tick(t){const k=Math.min((t-t0)/1600,1);el.textContent=Math.round(end*(1-Math.pow(1-k,3)))+suf;if(k<1)requestAnimationFrame(tick)})(t0);
+  });
+}
+
+/* ===== scroll reveal ===== */
+const io = new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");$$(".reveal-img",e.target).forEach(i=>i.classList.add("in"));io.unobserve(e.target)}}),{threshold:.12});
+$$(".rv,.reveal-img").forEach((e,i)=>{e.style.transitionDelay=(i%3)*90+"ms";io.observe(e)});
+
+/* ===== mobile menu ===== */
+const menu=$("#menu"), burger=$("#burger");
+function toggleMenu(open){menu.classList.toggle("open",open);burger.setAttribute("aria-expanded",open);burger.innerHTML=`<i class="fa-solid ${open?"fa-xmark":"fa-bars"}"></i>`}
+burger.addEventListener("click",()=>toggleMenu(!menu.classList.contains("open")));
+$$("a",menu).forEach(a=>a.addEventListener("click",()=>toggleMenu(false)));
+
+/* ===== active nav, header, top button, gentle parallax ===== */
+const spy = new IntersectionObserver(es=>es.forEach(e=>{
+  if(e.isIntersecting) $$(".menu a").forEach(a=>a.classList.toggle("active",a.getAttribute("href")==="#"+e.target.id))
+}),{rootMargin:"-45% 0px -50% 0px"});
+$$("[data-spy]").forEach(s=>spy.observe(s));
+const aboutImg=$(".about-img img");
+addEventListener("scroll",()=>{
+  const y=scrollY;
+  $("#hdr").classList.toggle("scrolled",y>30);
+  $("#top").classList.toggle("show",y>700);
+  if(!reduce&&aboutImg){const r=aboutImg.parentElement.getBoundingClientRect();if(r.top<innerHeight&&r.bottom>0)aboutImg.style.transform=`scale(1.12) translateY(${(r.top-innerHeight/2)*-.04}px)`}
+},{passive:true});
+$("#top").addEventListener("click",()=>scrollTo({top:0,behavior:reduce?"auto":"smooth"}));
+
+/* ===== button ripple ===== */
+document.addEventListener("click",e=>{
+  const b=e.target.closest(".btn"); if(!b) return;
+  const r=b.getBoundingClientRect(), d=Math.max(r.width,r.height), s=document.createElement("span");
+  s.className="ripple"; s.style.cssText=`width:${d}px;height:${d}px;left:${e.clientX-r.left-d/2}px;top:${e.clientY-r.top-d/2}px`;
+  b.appendChild(s); setTimeout(()=>s.remove(),600);
+});
+
+// Ari number 3
+
+/* ===== audio: animate bars while playing, pause others ===== */
+$$(".demo audio").forEach(a=>{
+  const c=a.closest(".demo");
+  a.addEventListener("play",()=>{$$(".demo audio").forEach(o=>{if(o!==a)o.pause()});c.classList.add("playing")});
+  ["pause","ended"].forEach(ev=>a.addEventListener(ev,()=>c.classList.remove("playing")));
+});
+/* ===== VIDEO PLAY / PAUSE BUTTON ===== */
+const videos = $$(".video-wrap video");
+
+videos.forEach(video => {
+
+  const wrap = video.closest(".video-wrap");
+  const btn = $(".video-play-btn", wrap);
+  const icon = $("i", btn);
+
+  function playVideo(){
+
+    /* Pause all other videos */
+    videos.forEach(other => {
+      if(other !== video){
+        other.pause();
+      }
+    });
+
+    video.play();
+  }
+
+  function pauseVideo(){
+    video.pause();
+  }
+
+  function toggleVideo(){
+    if(video.paused){
+      playVideo();
+    }else{
+      pauseVideo();
+    }
+  }
+
+  /* Center button */
+  btn.addEventListener("click", e => {
+    e.stopPropagation();
+    toggleVideo();
+  });
+
+  /* Clicking video itself also plays / pauses */
+  video.addEventListener("click", toggleVideo);
+
+  video.addEventListener("play", () => {
+    wrap.classList.add("playing");
+
+    icon.className = "fa-solid fa-pause";
+    btn.setAttribute("aria-label","Pause video");
+  });
+
+  video.addEventListener("pause", () => {
+    wrap.classList.remove("playing");
+
+    icon.className = "fa-solid fa-play";
+    btn.setAttribute("aria-label","Play video");
+  });
+
+  video.addEventListener("ended", () => {
+    wrap.classList.remove("playing");
+
+    icon.className = "fa-solid fa-play";
+    btn.setAttribute("aria-label","Play video");
+  });
+
+});
+
+/* ===== lightbox ===== */
+const lb=$("#lb"); let cur=0;
+function show(i){cur=(i+photos.length)%photos.length;$("#lbi").src=photos[cur][0];$("#lbi").alt=photos[cur][1];$("#lbc").textContent=photos[cur][1]}
+function openLb(i){show(i);lb.classList.add("open");document.body.style.overflow="hidden";$("#lbx").focus()}
+function closeLb(){lb.classList.remove("open");document.body.style.overflow=""}
+$$(".shot").forEach(s=>s.addEventListener("click",()=>openLb(+s.dataset.i)));
+$("#lbx").onclick=closeLb;$("#lbp").onclick=()=>show(cur-1);$("#lbn").onclick=()=>show(cur+1);
+lb.addEventListener("click",e=>{if(e.target===lb)closeLb()});
+addEventListener("keydown",e=>{if(!lb.classList.contains("open"))return;if(e.key==="Escape")closeLb();if(e.key==="ArrowLeft")show(cur-1);if(e.key==="ArrowRight")show(cur+1)});
+let tx=0;lb.addEventListener("touchstart",e=>tx=e.touches[0].clientX,{passive:true});
+lb.addEventListener("touchend",e=>{const d=e.changedTouches[0].clientX-tx;if(Math.abs(d)>50)show(cur+(d<0?1:-1))});
+
+/* ===== inquiry form -> mailto (no backend) ===== */
+$("#inq").addEventListener("submit",e=>{
+  e.preventDefault();
+  const f=new FormData(e.target);
+  const body=`Name: ${f.get("name")}\nPhone: ${f.get("phone")}\nEvent type: ${f.get("type")}\nEvent date: ${f.get("date")}\nVenue: ${f.get("venue")}\n\n${f.get("msg")}`;
+  location.href=`mailto:${profile.email}?subject=${encodeURIComponent("Booking Inquiry: "+f.get("type"))}&body=${encodeURIComponent(body)}`;
+});
+</script>
+</body>
+</html>
